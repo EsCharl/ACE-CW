@@ -58,10 +58,10 @@ public class FrequentFlyerProgram {
     }
 
     public void removePassenger(String confirmationCode){
-        int[] check;
+        int[] savedValues;
         if(confirmationList.containsKey(confirmationCode)) {
-            check = confirmationList.remove(confirmationCode);
-            treeSet.remove(new Passenger(null,null,null, check[0], check[1]));
+            savedValues = confirmationList.remove(confirmationCode);
+            treeSet.remove(new Passenger(null,null,null, savedValues[0], savedValues[1]));
             System.out.format("Passenger with Confirmation Code %s has been removed from the queue.\n",confirmationCode);
         }
         else
