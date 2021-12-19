@@ -45,7 +45,7 @@ public class FrequentFlyerProgram {
 
     public void addPassenger(String firstName,String lastName,String confirmationCode,int flyerStatusCode,int waitingListTime) {
         String[] flyerStatusList = {"Silver","Gold","Platinum"};
-        if(confirmationList.get(confirmationCode)==null) {
+        if(!confirmationList.containsKey(confirmationCode)) {
             if(treeSet.add(new Passenger(firstName,lastName,confirmationCode,flyerStatusCode,waitingListTime))) {
                 confirmationList.put(confirmationCode, new int[]{flyerStatusCode, waitingListTime});
                 System.out.format("Passenger %s %s with Confirmation Code %s has been added to the queue.\n", firstName, lastName, confirmationCode);
@@ -59,7 +59,7 @@ public class FrequentFlyerProgram {
 
     public void removePassenger(String confirmationCode){
         int[] check;
-        if(confirmationList.get(confirmationCode)!=null) {
+        if(confirmationList.containsKey(confirmationCode)) {
             check = confirmationList.remove(confirmationCode);
             treeSet.remove(new Passenger(null,null,null, check[0], check[1]));
             System.out.format("Passenger with Confirmation Code %s has been removed from the queue.\n",confirmationCode);
