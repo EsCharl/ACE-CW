@@ -41,12 +41,27 @@ public class FrequentFlyerProgram {
         @Override
         public int compare(Passenger o1, Passenger o2) {
             if(o1.flyerStatusCode != o2.flyerStatusCode){
+                System.out.println("test1");
+                if(o2.flyerStatusCode - o1.flyerStatusCode < 0)
+                    System.out.println("left");
+                if(o2.flyerStatusCode - o1.flyerStatusCode > 0)
+                    System.out.println("right");
                 return o2.flyerStatusCode - o1.flyerStatusCode;
             }
             else if (o1.waitingListTime != o2.waitingListTime){
+                System.out.println("test2");
+                if(o2.waitingListTime - o1.waitingListTime < 0)
+                    System.out.println("left");
+                if(o2.waitingListTime - o1.waitingListTime > 0)
+                    System.out.println("right");
                 return o2.waitingListTime - o1.waitingListTime;
             }
             else {
+                System.out.println("test3");
+                if(o2.referenceID - o1.referenceID < 0)
+                    System.out.println("left");
+                if(o2.referenceID - o1.referenceID > 0)
+                    System.out.println("right");
                 return o1.referenceID - o2.referenceID;
             }
         }
@@ -109,10 +124,10 @@ public class FrequentFlyerProgram {
 
     public void initialisePassengerList(FrequentFlyerProgram frequentFlyerProgram){
         frequentFlyerProgram.addPassenger("Charles","Leong",1,10);
+        frequentFlyerProgram.addPassenger("John","John",1,20);
         frequentFlyerProgram.addPassenger("Tan","Xian",2,20);
         frequentFlyerProgram.addPassenger("John","Cena",0,20);
         frequentFlyerProgram.addPassenger("Alton","John",2,10);
-        frequentFlyerProgram.addPassenger("John","John",1,20);
         frequentFlyerProgram.addPassenger("Smith","John",0,15);
         frequentFlyerProgram.addPassenger("Harry","Potter",0,25);
         frequentFlyerProgram.addPassenger("Albus","Snape",2,12);
@@ -156,7 +171,7 @@ public class FrequentFlyerProgram {
                         System.out.println("Enter Passenger Waiting Time:");
                         waitingListTime = input.nextInt();
                     } while (waitingListTime < 0);
-                        frequentFlyerProgram.addPassenger(firstName, lastName, flyerStatusCode, waitingListTime);
+                    frequentFlyerProgram.addPassenger(firstName, lastName, flyerStatusCode, waitingListTime);
                 }
                 case 2 -> {
                     do {
