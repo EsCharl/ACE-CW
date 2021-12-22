@@ -20,7 +20,7 @@ public class TreeNode {
         System.out.println("Preorder traversal of constructed BST ");
         arrayToBST.preOrder(root);
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Choose a number to search it in the tree to ");
+        System.out.println("\nChoose a number to search it in the tree ");
         int num = scanner.nextInt();
         key = arrayToBST.search(root,num);
         if(key == null){
