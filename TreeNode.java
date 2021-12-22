@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class TreeNode {
     int val;
     TreeNode left;
@@ -8,13 +10,25 @@ public class TreeNode {
     }
 
     public static void main(String[] args) {
+
         arrayToBST arrayToBST = new arrayToBST();
         TreeNode root;
-        int arr[] = new int[]{-10,-5,-3,0,1,4,7};
+        TreeNode key;
+        int[] arr = new int[]{-10,-5,-3,0,1,4,7};
 
         root = arrayToBST.arrayToBST(arr);
         System.out.println("Preorder traversal of constructed BST ");
         arrayToBST.preOrder(root);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Choose a number to search it in the tree to ");
+        int num = scanner.nextInt();
+        key = arrayToBST.search(root,num);
+        if(key == null){
+            System.out.println("Number not found in the tree!");
+
+        }else{
+            System.out.println("Number is found! " + key.val);
+        }
 
     }
 }
@@ -50,6 +64,19 @@ class arrayToBST {
         preOrder(node.right);
     }
 
+    // A utility function to search a given key in BST
+    public TreeNode search(TreeNode root, int number)
+    {
+        // Base Cases: root is null or key is present at root
+        if (root == null || root.val == number) {
+            return root;
+        }
+        // Key is greater than root's key
+        if (root.val < number) {
+            return search(root.right, number);
+        }
+        // Key is smaller than root's key
+        return search(root.left, number);
+    }
+
 }
-
-
